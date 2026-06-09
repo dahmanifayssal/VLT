@@ -2,8 +2,8 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<title>VLT – Rapport de Visite des Lieux de Travail – CESI SEPP</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>VLT – CESI SEPP</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 :root{
@@ -15,141 +15,97 @@
   --gris:#F7F7F5;--bord:#D3D1C7;
   --texte:#2C2C2A;--texte-sec:#5F5E5A;
 }
-body{font-family:Arial,sans-serif;font-size:13px;color:var(--texte);background:var(--gris);padding:0;margin:0;padding-bottom:100px}
-
-/* TOOLBAR */
+body{font-family:Arial,sans-serif;font-size:13px;color:var(--texte);background:var(--gris);margin:0;padding-bottom:120px}
 .toolbar{background:var(--bleu);padding:8px 12px;display:flex;flex-wrap:nowrap;gap:6px;align-items:center;position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,0.2)}
 .toolbar-title{color:#fff;font-weight:700;font-size:13px;flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-#save-status{display:none}
-.tb-btn{background:rgba(255,255,255,0.15);color:#fff;border:1px solid rgba(255,255,255,0.3);border-radius:6px;padding:10px 14px;font-size:13px;cursor:pointer;white-space:nowrap;font-weight:700;min-height:44px;flex-shrink:0;-webkit-tap-highlight-color:transparent;touch-action:manipulation;display:flex;align-items:center;gap:5px}
-.tb-btn:active{background:rgba(255,255,255,0.35)}
+.tb-btn{background:rgba(255,255,255,0.15);color:#fff;border:1px solid rgba(255,255,255,0.3);border-radius:6px;padding:10px 12px;font-size:18px;cursor:pointer;font-weight:700;min-height:44px;min-width:44px;flex-shrink:0;-webkit-tap-highlight-color:transparent;touch-action:manipulation;display:flex;align-items:center;justify-content:center}
+.tb-btn:active{background:rgba(255,255,255,0.4);transform:scale(0.95)}
 .tb-btn.green{background:#2E7D32;border-color:#2E7D32}
 .tb-btn.orange{background:#7B4F00;border-color:#7B4F00}
-@media(max-width:480px){
-  .toolbar-title{font-size:11px}
-  .tb-btn{padding:10px 10px;font-size:12px}
-  .tb-btn .btn-label{display:none}
-}
-
-/* PAGE */
-.page{max-width:900px;margin:0 auto;background:#fff;box-shadow:0 2px 16px rgba(0,0,0,0.08)}
-
-/* HEADER */
-.header-block{background:var(--bleu);color:#fff;padding:20px 24px}
-.header-block h1{font-size:15px;font-weight:700;margin-bottom:4px;letter-spacing:0.3px}
+.page{max-width:900px;margin:0 auto;background:#fff}
+.header-block{background:var(--bleu);color:#fff;padding:20px}
+.header-block h1{font-size:14px;font-weight:700;margin-bottom:3px}
 .header-block p{font-size:10px;opacity:0.85}
-.cesi-logo{font-size:24px;font-weight:900;letter-spacing:-1px;margin-bottom:6px}
-
-/* SECTIONS */
-.section{padding:16px 20px;border-bottom:1px solid var(--bord)}
+.cesi-logo{font-size:22px;font-weight:900;letter-spacing:-1px;margin-bottom:5px}
+.section{padding:16px;border-bottom:1px solid var(--bord)}
 .sec-title{font-size:10px;font-weight:700;color:var(--bleu);text-transform:uppercase;letter-spacing:1px;border-bottom:2px solid var(--bleu);padding-bottom:4px;margin-bottom:14px;display:inline-block}
-
-/* INFO GRID */
 .info-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px}
-@media(max-width:500px){.info-row{grid-template-columns:1fr}}
+@media(max-width:480px){.info-row{grid-template-columns:1fr}}
 .info-cell label{font-size:10px;font-weight:700;color:var(--bleu);display:block;margin-bottom:3px;text-transform:uppercase;letter-spacing:0.5px}
-.info-cell input{width:100%;border:1px solid var(--bord);border-radius:6px;padding:9px 10px;font-size:13px;font-family:Arial,sans-serif;color:var(--texte);background:#fff}
-.info-cell input:focus{outline:none;border-color:var(--bleu);box-shadow:0 0 0 2px rgba(27,79,138,0.12)}
-
-/* TAILLE BAR */
+.info-cell input{width:100%;border:1px solid var(--bord);border-radius:6px;padding:10px;font-size:14px;font-family:Arial,sans-serif;color:var(--texte);background:#fff}
 .size-bar{display:flex;align-items:center;gap:10px;background:var(--gris);border-radius:6px;padding:8px 12px;margin-bottom:14px;border:1px solid var(--bord)}
-.size-bar-label{font-size:11px;color:var(--texte-sec);white-space:nowrap}
-.size-bar-track{flex:1;height:6px;background:var(--bord);border-radius:3px;overflow:hidden}
-#size-bar-fill{height:6px;border-radius:3px;background:var(--bleu);transition:width 0.4s,background 0.4s;width:2%}
-#size-val{font-weight:700;font-size:12px;color:var(--bleu);white-space:nowrap;min-width:50px;text-align:right}
-
-/* OBS */
-.add-btn{width:100%;padding:18px;background:var(--bleu-clair);color:var(--bleu);border:2px dashed var(--bleu);border-radius:8px;font-size:16px;font-weight:700;cursor:pointer;margin-top:12px;min-height:56px;-webkit-tap-highlight-color:transparent;touch-action:manipulation}
-.add-btn:active{background:#c5daf5}
-
+.size-bar span{font-size:11px;color:var(--texte-sec)}
+.size-track{flex:1;height:6px;background:var(--bord);border-radius:3px;overflow:hidden}
+#size-fill{height:6px;border-radius:3px;background:var(--bleu);width:2%;transition:width 0.4s,background 0.4s}
+#size-val{font-weight:700;font-size:12px;color:var(--bleu);white-space:nowrap}
+#btn-add-obs{width:100%;padding:18px;background:var(--bleu-clair);color:var(--bleu);border:2px dashed var(--bleu);border-radius:8px;font-size:16px;font-weight:700;cursor:pointer;margin-top:12px;min-height:56px;display:block;touch-action:manipulation;-webkit-tap-highlight-color:rgba(27,79,138,0.2)}
+#btn-add-obs:active{background:#c5daf5}
 .obs-card{border:1px solid var(--bord);border-radius:8px;margin-bottom:14px;overflow:hidden;background:#fff}
-.obs-head{background:var(--gris);padding:10px 14px;display:flex;align-items:center;gap:8px;border-bottom:1px solid var(--bord)}
+.obs-head{background:var(--gris);padding:10px 12px;display:flex;align-items:center;gap:8px;border-bottom:1px solid var(--bord)}
 .obs-num{background:var(--bleu);color:#fff;border-radius:50%;width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0}
-.obs-loc{flex:1;border:none;background:transparent;font-size:13px;font-weight:600;color:var(--texte);outline:none;min-width:0;font-family:Arial,sans-serif}
+.obs-loc{flex:1;border:none;background:transparent;font-size:13px;font-weight:600;color:var(--texte);outline:none;min-width:0;font-family:Arial,sans-serif;padding:4px 0}
 .obs-loc::placeholder{color:#999;font-weight:400}
-.prio-sel{border:1px solid var(--bord);border-radius:6px;padding:6px 8px;font-size:12px;font-weight:700;background:#fff;color:var(--texte);cursor:pointer;min-height:34px;-webkit-appearance:none;appearance:none}
+.prio-sel{border:1px solid var(--bord);border-radius:6px;padding:6px;font-size:12px;font-weight:700;background:#fff;color:var(--texte);min-height:36px;flex-shrink:0;max-width:110px}
 .prio-sel.p-u{background:var(--rouge-f);color:var(--rouge);border-color:#F7C1C1}
 .prio-sel.p-m{background:var(--orange-f);color:var(--orange);border-color:#FAC775}
 .prio-sel.p-v{background:var(--bleu2-f);color:var(--bleu2);border-color:#B5D4F4}
 .prio-sel.p-c{background:var(--vert-f);color:var(--vert);border-color:#C0DD97}
-.del-btn{background:var(--rouge-f);color:var(--rouge);border:1px solid #F7C1C1;border-radius:6px;width:44px;height:44px;cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center;flex-shrink:0;-webkit-tap-highlight-color:transparent;touch-action:manipulation}
-
+.del-btn{background:var(--rouge-f);color:var(--rouge);border:1px solid #F7C1C1;border-radius:6px;width:40px;height:40px;cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center;flex-shrink:0;touch-action:manipulation}
 .obs-body{padding:14px}
 .field-wrap{margin-bottom:12px}
-.field-wrap>label{font-size:10px;font-weight:700;color:var(--bleu);display:flex;align-items:center;gap:6px;margin-bottom:5px;text-transform:uppercase;letter-spacing:0.5px}
-.field-wrap textarea{width:100%;border:1px solid var(--bord);border-radius:6px;padding:9px 10px;font-size:13px;line-height:1.55;resize:vertical;font-family:Arial,sans-serif;color:var(--texte);background:#fff}
-.field-wrap textarea:focus{outline:none;border-color:var(--bleu);box-shadow:0 0 0 2px rgba(27,79,138,0.1)}
-
-.ref-label-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:5px}
-.ref-label-text{font-size:10px;font-weight:700;color:var(--bleu);text-transform:uppercase;letter-spacing:0.5px}
-.cbet-btn{background:var(--bleu);color:#fff;border:none;border-radius:6px;padding:10px 14px;font-size:13px;cursor:pointer;font-weight:700;min-height:44px;-webkit-tap-highlight-color:transparent;touch-action:manipulation}
+.field-lbl{font-size:10px;font-weight:700;color:var(--bleu);display:flex;align-items:center;justify-content:space-between;margin-bottom:5px;text-transform:uppercase;letter-spacing:0.5px}
+.field-wrap textarea{width:100%;border:1px solid var(--bord);border-radius:6px;padding:10px;font-size:14px;line-height:1.5;resize:vertical;font-family:Arial,sans-serif;color:var(--texte);background:#fff;min-height:80px}
+.field-wrap textarea:focus{outline:none;border-color:var(--bleu)}
+.cbet-btn{background:var(--bleu);color:#fff;border:none;border-radius:6px;padding:8px 12px;font-size:12px;cursor:pointer;font-weight:700;min-height:36px;touch-action:manipulation;white-space:nowrap}
 .cbet-btn:active{background:#14397a}
-
-/* PHOTOS */
-.photos-label{font-size:10px;font-weight:700;color:var(--bleu);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:8px;display:flex;align-items:center;gap:6px}
+.photos-lbl{font-size:10px;font-weight:700;color:var(--bleu);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:8px}
 .photos-grid{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:4px}
-.photo-thumb{position:relative;width:100px;height:78px;border-radius:6px;overflow:hidden;border:1px solid var(--bord)}
+.photo-thumb{position:relative;width:95px;height:75px;border-radius:6px;overflow:hidden;border:1px solid var(--bord);flex-shrink:0}
 .photo-thumb img{width:100%;height:100%;object-fit:cover}
-.photo-del{position:absolute;top:3px;right:3px;background:rgba(163,45,45,0.9);color:#fff;border:none;border-radius:50%;width:20px;height:20px;font-size:13px;cursor:pointer;display:flex;align-items:center;justify-content:center;line-height:1;-webkit-tap-highlight-color:transparent}
-.photo-size{position:absolute;bottom:3px;left:4px;background:rgba(0,0,0,0.6);color:#fff;font-size:9px;border-radius:3px;padding:1px 4px}
-.add-photo-btn{width:100px;height:78px;border:2px dashed var(--bord);border-radius:6px;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;color:var(--texte-sec);font-size:11px;gap:3px;background:var(--gris);-webkit-tap-highlight-color:transparent}
-.add-photo-btn:active{border-color:var(--bleu);color:var(--bleu)}
-.add-photo-icon{font-size:26px;line-height:1}
+.photo-del{position:absolute;top:3px;right:3px;background:rgba(163,45,45,0.9);color:#fff;border:none;border-radius:50%;width:22px;height:22px;font-size:14px;cursor:pointer;display:flex;align-items:center;justify-content:center;touch-action:manipulation}
+.photo-ko{position:absolute;bottom:2px;left:3px;background:rgba(0,0,0,0.6);color:#fff;font-size:9px;border-radius:3px;padding:1px 4px}
+.add-photo-lbl{width:95px;height:75px;border:2px dashed var(--bord);border-radius:6px;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;color:var(--texte-sec);font-size:11px;gap:3px;background:var(--gris);flex-shrink:0;touch-action:manipulation}
+.add-photo-lbl:active{border-color:var(--bleu);color:var(--bleu)}
 .photo-hint{font-size:10px;color:var(--texte-sec);font-style:italic;margin-top:2px}
-
-/* SYNTHESE */
-.synthese-box{background:var(--rouge-f);border:1px solid #F7C1C1;border-radius:8px;padding:12px 14px;margin-bottom:12px}
+.synthese-box{background:var(--rouge-f);border:1px solid #F7C1C1;border-radius:8px;padding:12px;margin-bottom:12px}
 .synthese-box h4{color:var(--rouge);font-size:12px;font-weight:700;margin-bottom:4px}
 .synthese-box p{color:var(--rouge);font-size:12px;line-height:1.5}
-.synthese-ta{width:100%;border:1px solid var(--bord);border-radius:6px;padding:10px;font-size:13px;line-height:1.55;resize:vertical;font-family:Arial,sans-serif;color:var(--texte);background:#fff;min-height:100px}
-.synthese-ta:focus{outline:none;border-color:var(--bleu)}
-
-/* SIGNATURE */
-.sig-block{background:var(--gris);padding:14px 20px;font-size:10px;color:var(--texte-sec);border-top:1px solid var(--bord)}
+.synthese-ta{width:100%;border:1px solid var(--bord);border-radius:6px;padding:10px;font-size:14px;line-height:1.5;resize:vertical;font-family:Arial,sans-serif;color:var(--texte);background:#fff;min-height:100px}
+.sig-block{background:var(--gris);padding:14px 16px;font-size:10px;color:var(--texte-sec);border-top:1px solid var(--bord)}
 .sig-block strong{color:var(--bleu);font-size:12px;display:block;margin-bottom:2px}
-
-/* MODAL OVERLAY */
-.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:500;align-items:flex-start;justify-content:center;padding:16px;overflow-y:auto}
-.modal-overlay.open{display:flex}
-.modal{background:#fff;border-radius:12px;width:100%;max-width:420px;margin:auto;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,0.2);max-height:90vh}
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:500;padding:16px;overflow-y:auto}
+.modal-overlay.open{display:block}
+.modal{background:#fff;border-radius:12px;width:100%;max-width:420px;margin:0 auto;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,0.2);max-height:85vh}
 .modal-head{background:var(--bleu);color:#fff;padding:12px 16px;display:flex;align-items:center;gap:10px;flex-shrink:0}
 .modal-head h3{flex:1;font-size:14px;font-weight:700}
-.modal-close{background:rgba(255,255,255,0.2);border:none;color:#fff;border-radius:6px;width:30px;height:30px;cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center}
+.modal-close{background:rgba(255,255,255,0.2);border:none;color:#fff;border-radius:6px;width:36px;height:36px;cursor:pointer;font-size:20px;display:flex;align-items:center;justify-content:center;touch-action:manipulation}
 .modal-search{padding:10px 14px;border-bottom:1px solid var(--bord);flex-shrink:0}
-.modal-search input{width:100%;border:1px solid var(--bord);border-radius:6px;padding:9px 10px;font-size:13px;font-family:Arial,sans-serif}
-.modal-search input:focus{outline:none;border-color:var(--bleu)}
+.modal-search input{width:100%;border:1px solid var(--bord);border-radius:6px;padding:10px;font-size:14px;font-family:Arial,sans-serif}
 .modal-cats{display:flex;flex-wrap:wrap;gap:6px;padding:10px 14px;border-bottom:1px solid var(--bord);flex-shrink:0}
-.cat-btn{padding:5px 12px;border-radius:20px;border:1px solid var(--bord);font-size:12px;cursor:pointer;background:#fff;color:var(--texte-sec);font-weight:600;-webkit-tap-highlight-color:transparent}
+.cat-btn{padding:6px 12px;border-radius:20px;border:1px solid var(--bord);font-size:12px;cursor:pointer;background:#fff;color:var(--texte-sec);font-weight:600;touch-action:manipulation}
 .cat-btn.active{background:var(--bleu);color:#fff;border-color:var(--bleu)}
 .modal-list{flex:1;overflow-y:auto;padding:10px 14px;-webkit-overflow-scrolling:touch}
 .art-item{border:1px solid var(--bord);border-radius:6px;margin-bottom:8px;overflow:hidden}
-.art-head{padding:10px 12px;background:var(--gris);display:flex;align-items:center;justify-content:space-between;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.art-head{padding:10px 12px;background:var(--gris);display:flex;align-items:center;justify-content:space-between;cursor:pointer;touch-action:manipulation}
 .art-head:active{background:var(--bleu-clair)}
 .art-ref{font-size:12px;font-weight:700;color:var(--bleu)}
 .art-theme{font-size:10px;color:var(--texte-sec);margin-top:1px}
-.art-chevron{font-size:16px;color:var(--texte-sec);transition:transform 0.2s}
-.art-chevron.open{transform:rotate(180deg)}
-.art-body{display:none;padding:10px 12px;font-size:12px;color:var(--texte-sec);line-height:1.55;border-top:1px solid var(--bord)}
+.art-body{display:none;padding:10px 12px;font-size:12px;color:var(--texte-sec);line-height:1.5;border-top:1px solid var(--bord)}
 .art-body.open{display:block}
-.art-insert{width:100%;margin-top:8px;padding:8px;background:var(--bleu);color:#fff;border:none;border-radius:6px;font-size:12px;font-weight:700;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.art-insert{width:100%;margin-top:8px;padding:10px;background:var(--bleu);color:#fff;border:none;border-radius:6px;font-size:13px;font-weight:700;cursor:pointer;touch-action:manipulation}
 .art-insert:active{background:#14397a}
-
-@media print{
-  .toolbar,.add-btn,.del-btn,.cbet-btn,.add-photo-btn,.photo-del{display:none!important}
-  .page{box-shadow:none;max-width:100%}
-  .obs-card{break-inside:avoid}
-}
+@media print{.toolbar,#btn-add-obs,.del-btn,.cbet-btn,.add-photo-lbl,.photo-del,.modal-overlay{display:none!important}}
 </style>
 </head>
 <body>
 
 <div class="toolbar">
   <span class="toolbar-title">📋 VLT — CESI SEPP</span>
-  <button class="tb-btn green" onclick="saveJSON()">💾 <span class="btn-label">Sauvegarder</span></button>
-  <button class="tb-btn orange" onclick="loadJSON()">📂 <span class="btn-label">Reprendre</span></button>
-  <button class="tb-btn" onclick="window.print()">🖨 <span class="btn-label">Imprimer</span></button>
+  <button class="tb-btn green" id="btn-save" title="Sauvegarder">💾</button>
+  <button class="tb-btn orange" id="btn-load" title="Reprendre">📂</button>
+  <button class="tb-btn" id="btn-print" title="Imprimer">🖨</button>
 </div>
-<input type="file" id="json-input" accept=".json" style="display:none" onchange="handleLoad(event)">
+<input type="file" id="json-input" accept=".json" style="display:none">
 
 <div class="page">
   <div class="header-block">
@@ -178,12 +134,12 @@ body{font-family:Arial,sans-serif;font-size:13px;color:var(--texte);background:v
   <div class="section">
     <div class="sec-title">Observations</div>
     <div class="size-bar">
-      <span class="size-bar-label">💾 Taille du fichier :</span>
-      <div class="size-bar-track"><div id="size-bar-fill"></div></div>
+      <span>💾 Taille du fichier :</span>
+      <div class="size-track"><div id="size-fill"></div></div>
       <span id="size-val">~0 Ko</span>
     </div>
     <div id="obs-list"></div>
-    <button class="add-btn" id="btn-add-obs">+ Ajouter une observation</button>
+    <button id="btn-add-obs">+ Ajouter une observation</button>
   </div>
 
   <div class="section">
@@ -193,14 +149,13 @@ body{font-family:Arial,sans-serif;font-size:13px;color:var(--texte);background:v
       <p id="urg-liste" style="font-style:italic">— Aucun point urgent pour l'instant —</p>
     </div>
     <textarea class="synthese-ta" id="synthese" rows="6"
-      placeholder="Plan global de prévention, suites à donner, intégration dans le plan annuel d'action (art. II.1-7 CBET)…"
-      oninput="scheduleSave()"></textarea>
+      placeholder="Plan global de prévention, suites à donner, intégration dans le plan annuel d'action (art. II.1-7 CBET)…"></textarea>
   </div>
 
   <div class="sig-block">
     <strong>Faïçal DAHMANI</strong>
-    Conseiller en prévention niveau 1 — Service Externe de Prévention et de Protection au Travail – CESI<br>
-    faical.dahmani@cesi.be | 02 771 00 25 | Avenue Konrad Adenauerlaan 8, 1200 Bruxelles | www.cesi.be
+    Conseiller en prévention niveau 1 — CESI SEPP<br>
+    faical.dahmani@cesi.be | 02 771 00 25 | Avenue Konrad Adenauerlaan 8, 1200 Bruxelles
   </div>
 </div>
 
@@ -209,10 +164,10 @@ body{font-family:Arial,sans-serif;font-size:13px;color:var(--texte);background:v
   <div class="modal">
     <div class="modal-head">
       <h3>📚 Bibliothèque CBET 2017</h3>
-      <button class="modal-close" onclick="closeModal()">✕</button>
+      <button class="modal-close" id="btn-modal-close">✕</button>
     </div>
     <div class="modal-search">
-      <input id="cbet-search" placeholder="Rechercher un article, thème, mot-clé…" oninput="renderCbet()">
+      <input id="cbet-search" placeholder="Rechercher un article, thème…">
     </div>
     <div class="modal-cats" id="cbet-cats"></div>
     <div class="modal-list" id="cbet-list"></div>
@@ -220,45 +175,14 @@ body{font-family:Arial,sans-serif;font-size:13px;color:var(--texte);background:v
 </div>
 
 <script>
-// ─── COMPRESSION ──────────────────────────────────────────────
-const PHOTO_MAX_W = 900;
-const PHOTO_QUALITY = 0.72;
+var PHOTO_MAX_W = 900;
+var PHOTO_QUALITY = 0.72;
+var obsCount = 0;
+var currentObsId = null;
+var saveTimer = null;
+var activeCat = null;
 
-function compressImage(file) {
-  return new Promise(resolve => {
-    const reader = new FileReader();
-    reader.onload = e => {
-      const img = new Image();
-      img.onload = () => {
-        let w = img.width, h = img.height;
-        if (w > PHOTO_MAX_W) { h = Math.round(h * PHOTO_MAX_W / w); w = PHOTO_MAX_W; }
-        const canvas = document.createElement('canvas');
-        canvas.width = w; canvas.height = h;
-        canvas.getContext('2d').drawImage(img, 0, 0, w, h);
-        resolve(canvas.toDataURL('image/jpeg', PHOTO_QUALITY));
-      };
-      img.src = e.target.result;
-    };
-    reader.readAsDataURL(file);
-  });
-}
-
-function b64size(b64) { return Math.round(b64.length * 3 / 4 / 1024); }
-
-// ─── TAILLE ───────────────────────────────────────────────────
-function updateSizeBar() {
-  const json = JSON.stringify(collectData());
-  const kb = Math.round(json.length / 1024);
-  const mb = (kb / 1024).toFixed(1);
-  document.getElementById('size-val').textContent = kb < 1024 ? kb + ' Ko' : mb + ' Mo';
-  const pct = Math.min(100, kb / (40 * 1024) * 100);
-  const fill = document.getElementById('size-bar-fill');
-  fill.style.width = Math.max(2, pct) + '%';
-  fill.style.background = pct > 75 ? '#A32D2D' : pct > 45 ? '#854F0B' : '#1B4F8A';
-}
-
-// ─── BIBLIOTHÈQUE CBET ────────────────────────────────────────
-const CBET = [
+var CBET = [
   {ref:"Art. II.3-53 §1 et §3",theme:"Visite des lieux de travail",cat:"VLT",text:"Le conseiller en prévention du SEPP procède périodiquement à la visite des lieux de travail. Il rédige un rapport de visite qu'il adresse à l'employeur."},
   {ref:"Art. III.3-4",theme:"Mesures d'évacuation",cat:"Incendie",text:"L'employeur prend les mesures nécessaires pour : 1° avertir et alerter rapidement les occupants ; 2° assurer l'évacuation rapide et sans danger des travailleurs ; 3° combattre rapidement et efficacement tout début d'incendie."},
   {ref:"Art. III.3-11 §3",theme:"Éclairage de sécurité",cat:"Incendie",text:"Les voies d'évacuation et sorties de secours doivent être équipées d'un éclairage de sécurité."},
@@ -267,79 +191,111 @@ const CBET = [
   {ref:"Art. III.3-17",theme:"Emplacement des extincteurs",cat:"Incendie",text:"Les équipements non automatiques de protection contre l'incendie sont placés à des endroits visibles ou clairement signalés, et doivent être d'accès et de manipulation faciles."},
   {ref:"Art. III.3-18",theme:"Signalisation des équipements incendie",cat:"Incendie",text:"La signalisation des équipements de protection contre l'incendie est conforme au titre 6 du Livre III."},
   {ref:"Art. III.3-20 §2",theme:"Compartimentage coupe-feu",cat:"Incendie",text:"L'employeur veille à ce que la construction du bâtiment permette de limiter l'apparition et la propagation du feu et de la fumée, conformément aux art. 52.5.4 et 52.5.5 du RGPT."},
-  {ref:"Art. III.3-22 §1",theme:"Contrôle annuel des équipements incendie",cat:"Incendie",text:"Les équipements de protection contre l'incendie sont contrôlés au moins une fois par an et maintenus en bon état d'usage. Les dates de contrôle et les constatations doivent être conservées et tenues à la disposition du Comité."},
-  {ref:"Art. III.3-22 §2",theme:"Contrôle installations – chauffage / ventilation / électricité",cat:"Incendie",text:"Les installations de chauffage, de ventilation et d'électricité sont maintenues en bon état de fonctionnement et contrôlées périodiquement."},
+  {ref:"Art. III.3-22 §1",theme:"Contrôle annuel des équipements incendie",cat:"Incendie",text:"Les équipements de protection contre l'incendie sont contrôlés au moins une fois par an et maintenus en bon état d'usage."},
+  {ref:"Art. III.3-22 §2",theme:"Contrôle installations techniques",cat:"Incendie",text:"Les installations de chauffage, de ventilation et d'électricité sont maintenues en bon état de fonctionnement et contrôlées périodiquement."},
   {ref:"Art. III.1-5",theme:"Installations électriques – danger incendie",cat:"Électricité",text:"L'installation électrique doit être conçue et maintenue pour ne pas constituer un danger d'incendie et protéger contre les risques de contacts directs ou indirects."},
   {ref:"Art. III.1-6",theme:"Volume et superficie des locaux",cat:"Lieux de travail",text:"Les locaux de travail doivent avoir une superficie et un volume permettant d'exécuter le travail sans risque pour la sécurité, la santé ou le bien-être des travailleurs."},
   {ref:"Art. III.1-13",theme:"Fenêtres et dispositifs de ventilation",cat:"Lieux de travail",text:"Les fenêtres, châssis de toit et dispositifs de ventilation doivent pouvoir être ouverts, fermés, réglés et fixés de manière sûre par les travailleurs."},
-  {ref:"Art. III.1-21",theme:"Voies de circulation",cat:"Lieux de travail",text:"Les voies de circulation sont situées et aménagées de telle façon que piétons et travailleurs puissent les utiliser facilement et en toute sécurité et ne soumettent pas ces utilisateurs à des risques."},
+  {ref:"Art. III.1-21",theme:"Voies de circulation",cat:"Lieux de travail",text:"Les voies de circulation sont situées et aménagées de telle façon que piétons et travailleurs puissent les utiliser facilement et en toute sécurité."},
   {ref:"Art. III.2-3",theme:"Analyse des risques électriques",cat:"Électricité",text:"L'employeur effectue une analyse des risques de chaque installation électrique, notamment les risques de surchauffe et d'incendie."},
-  {ref:"Art. III.2-18",theme:"Accès aux installations électriques (BA4/BA5)",cat:"Électricité",text:"L'employeur prend les mesures nécessaires pour que seuls les travailleurs disposant de la compétence BA4 ou BA5 (art. 47 RGIE) soient chargés des travaux aux installations électriques ou aient accès aux parties présentant un risque électrique."},
-  {ref:"Art. III.6-4",theme:"Information des travailleurs – signalisation",cat:"Signalisation",text:"L'employeur veille à ce que les travailleurs reçoivent des instructions appropriées concernant la signalisation de sécurité et de santé au travail."},
-  {ref:"Art. III.6-6 §1",theme:"Panneaux de signalisation – conformité",cat:"Signalisation",text:"Les panneaux de signalisation doivent être conformes aux prescriptions et placés à un endroit approprié, bien éclairés, visibles et compréhensibles."},
-  {ref:"Art. III.6-7",theme:"Signalisation – correspondance avec la réalité",cat:"Signalisation",text:"La signalisation de sécurité doit être apposée aux endroits appropriés et correspondre à la réalité."},
-  {ref:"Art. I.5-4",theme:"Boîte de secours – présence et signalisation",cat:"Premiers secours",text:"L'employeur vérifie régulièrement si les moyens de premiers secours sont effectivement présents et conformes. La boîte de secours doit être signalée et son emplacement connu des travailleurs. Le contenu est déterminé sur avis du conseiller en prévention-médecin du travail."},
-  {ref:"Art. VI.1-6",theme:"Évaluation du risque chimique",cat:"Risque chimique",text:"L'employeur évalue les risques liés aux agents chimiques, notamment les risques d'incompatibilité, d'inflammation et les effets sur la santé des travailleurs."},
-  {ref:"Art. VI.1-12 3°",theme:"Mesures de protection – agents chimiques",cat:"Risque chimique",text:"L'employeur met en place des mesures de protection collective : stockage sécurisé, ségrégation des produits incompatibles, bacs de rétention adaptés."},
-  {ref:"Art. VI.1-12 7°",theme:"Procédures de sécurité – agents chimiques",cat:"Risque chimique",text:"L'employeur met en place des procédures assurant la sécurité lors du stockage, de la manipulation et du transport des agents chimiques dangereux."},
-  {ref:"Art. III.5-9",theme:"Rétention – liquides inflammables",cat:"Risque chimique",text:"Le sol des dépôts de liquides inflammables doit être exécuté en cuvette étanche pour assurer la rétention en cas de déversement accidentel."},
+  {ref:"Art. III.2-18",theme:"Accès installations électriques BA4/BA5",cat:"Électricité",text:"L'employeur prend les mesures nécessaires pour que seuls les travailleurs disposant de la compétence BA4 ou BA5 soient chargés des travaux aux installations électriques ou aient accès aux parties présentant un risque électrique."},
+  {ref:"Art. III.6-4",theme:"Information travailleurs – signalisation",cat:"Signalisation",text:"L'employeur veille à ce que les travailleurs reçoivent des instructions appropriées concernant la signalisation de sécurité et de santé au travail."},
+  {ref:"Art. III.6-6 §1",theme:"Panneaux de signalisation conformes",cat:"Signalisation",text:"Les panneaux de signalisation doivent être conformes aux prescriptions et placés à un endroit approprié, bien éclairés, visibles et compréhensibles."},
+  {ref:"Art. III.6-7",theme:"Signalisation – correspondance réalité",cat:"Signalisation",text:"La signalisation de sécurité doit être apposée aux endroits appropriés et correspondre à la réalité."},
+  {ref:"Art. I.5-4",theme:"Boîte de secours – présence et signalisation",cat:"Premiers secours",text:"L'employeur vérifie régulièrement si les moyens de premiers secours sont effectivement présents et conformes. La boîte de secours doit être signalée et son emplacement connu des travailleurs."},
+  {ref:"Art. VI.1-6",theme:"Évaluation du risque chimique",cat:"Risque chimique",text:"L'employeur évalue les risques liés aux agents chimiques, notamment les risques d'incompatibilité, d'inflammation et les effets sur la santé."},
+  {ref:"Art. VI.1-12 3°",theme:"Mesures de protection chimiques",cat:"Risque chimique",text:"L'employeur met en place des mesures de protection collective : stockage sécurisé, ségrégation des produits incompatibles, bacs de rétention adaptés."},
+  {ref:"Art. VI.1-12 7°",theme:"Procédures sécurité agents chimiques",cat:"Risque chimique",text:"L'employeur met en place des procédures assurant la sécurité lors du stockage, de la manipulation et du transport des agents chimiques dangereux."},
+  {ref:"Art. III.5-9",theme:"Rétention liquides inflammables",cat:"Risque chimique",text:"Le sol des dépôts de liquides inflammables doit être exécuté en cuvette étanche pour assurer la rétention en cas de déversement accidentel."},
   {ref:"Art. VIII.1-2 et VIII.1-3",theme:"Sièges de travail ergonomiques",cat:"Ergonomie",text:"L'employeur met à disposition un siège de travail répondant aux exigences de confort et de santé, notamment réglable en hauteur d'assise, avec dossier ajustable."},
-  {ref:"Art. VIII.2-3",theme:"Analyse des risques – postes à écran",cat:"Ergonomie",text:"L'employeur réalise une analyse des risques des postes à écran de visualisation et prend les mesures préventives qui en découlent."},
-  {ref:"Art. VIII.2-6 + Annexe VIII.2-1",theme:"Prescriptions minimales – postes à écran",cat:"Ergonomie",text:"Le poste à écran doit répondre aux prescriptions minimales : écran ajustable, siège stable et réglable, surface de travail suffisante, éclairage adapté, absence de reflets."},
-  {ref:"Art. II.1-6",theme:"Plan global de prévention (5 ans)",cat:"Gestion",text:"L'employeur établit un plan global de prévention pour une période de cinq ans, tenant compte des résultats de l'analyse des risques et des objectifs à atteindre."},
-  {ref:"Art. II.1-7",theme:"Plan annuel d'action",cat:"Gestion",text:"L'employeur établit annuellement un plan d'action précisant les priorités de mise en œuvre du plan global de prévention, avec les moyens et délais prévus."},
+  {ref:"Art. VIII.2-3",theme:"Analyse risques postes à écran",cat:"Ergonomie",text:"L'employeur réalise une analyse des risques des postes à écran de visualisation et prend les mesures préventives qui en découlent."},
+  {ref:"Art. VIII.2-6 + Annexe VIII.2-1",theme:"Prescriptions minimales postes à écran",cat:"Ergonomie",text:"Le poste à écran doit répondre aux prescriptions minimales : écran ajustable, siège stable et réglable, surface de travail suffisante, éclairage adapté."},
+  {ref:"Art. II.1-6",theme:"Plan global de prévention 5 ans",cat:"Gestion",text:"L'employeur établit un plan global de prévention pour une période de cinq ans, tenant compte des résultats de l'analyse des risques."},
+  {ref:"Art. II.1-7",theme:"Plan annuel d'action",cat:"Gestion",text:"L'employeur établit annuellement un plan d'action précisant les priorités de mise en œuvre du plan global de prévention."}
 ];
 
-const CATS = [...new Set(CBET.map(a => a.cat))];
-let activeCat = null;
+var CATS = [];
+CBET.forEach(function(a) { if (CATS.indexOf(a.cat) === -1) CATS.push(a.cat); });
 
-function initModal() {
-  const catDiv = document.getElementById('cbet-cats');
-  catDiv.innerHTML = '<button class="cat-btn active" onclick="setCat(null,this)">Tous</button>' +
-    CATS.map(c => `<button class="cat-btn" onclick="setCat('${c}',this)">${c}</button>`).join('');
-  renderCbet();
+function compressImage(file, callback) {
+  var reader = new FileReader();
+  reader.onload = function(e) {
+    var img = new Image();
+    img.onload = function() {
+      var w = img.width, h = img.height;
+      if (w > PHOTO_MAX_W) { h = Math.round(h * PHOTO_MAX_W / w); w = PHOTO_MAX_W; }
+      var canvas = document.createElement('canvas');
+      canvas.width = w; canvas.height = h;
+      canvas.getContext('2d').drawImage(img, 0, 0, w, h);
+      callback(canvas.toDataURL('image/jpeg', PHOTO_QUALITY));
+    };
+    img.src = e.target.result;
+  };
+  reader.readAsDataURL(file);
 }
 
-function setCat(cat, btn) {
-  activeCat = cat;
-  document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
+function b64size(b64) { return Math.round(b64.length * 3 / 4 / 1024); }
+
+function updateSizeBar() {
+  var json = JSON.stringify(collectData());
+  var kb = Math.round(json.length / 1024);
+  document.getElementById('size-val').textContent = kb < 1024 ? kb + ' Ko' : (kb/1024).toFixed(1) + ' Mo';
+  var pct = Math.min(100, kb / (40 * 1024) * 100);
+  var fill = document.getElementById('size-fill');
+  fill.style.width = Math.max(2, pct) + '%';
+  fill.style.background = pct > 75 ? '#A32D2D' : pct > 45 ? '#854F0B' : '#1B4F8A';
+}
+
+function initModal() {
+  var catDiv = document.getElementById('cbet-cats');
+  var html = '<button class="cat-btn active" data-cat="">Tous</button>';
+  CATS.forEach(function(c) {
+    html += '<button class="cat-btn" data-cat="' + c + '">' + c + '</button>';
+  });
+  catDiv.innerHTML = html;
+  catDiv.querySelectorAll('.cat-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      catDiv.querySelectorAll('.cat-btn').forEach(function(b) { b.classList.remove('active'); });
+      btn.classList.add('active');
+      activeCat = btn.getAttribute('data-cat') || null;
+      renderCbet();
+    });
+  });
+  document.getElementById('cbet-search').addEventListener('input', renderCbet);
   renderCbet();
 }
 
 function renderCbet() {
-  const q = (document.getElementById('cbet-search').value || '').toLowerCase();
-  const items = CBET.filter(a => {
+  var q = (document.getElementById('cbet-search').value || '').toLowerCase();
+  var items = CBET.filter(function(a) {
     if (activeCat && a.cat !== activeCat) return false;
     if (!q) return true;
-    return (a.ref + a.theme + a.text + a.cat).toLowerCase().includes(q);
+    return (a.ref + a.theme + a.text + a.cat).toLowerCase().indexOf(q) !== -1;
   });
-  document.getElementById('cbet-list').innerHTML = items.map((a, i) => `
-    <div class="art-item">
-      <div class="art-head" onclick="toggleArt('ci${i}')">
-        <div>
-          <div class="art-ref">${a.ref}</div>
-          <div class="art-theme">${a.theme} · <em>${a.cat}</em></div>
-        </div>
-        <span class="art-chevron" id="chev-ci${i}">▾</span>
-      </div>
-      <div class="art-body" id="ci${i}">
-        <em>${a.text}</em>
-        <button class="art-insert" onclick="insertArt('${a.ref.replace(/'/g,"\\'")}','${a.text.replace(/'/g,"\\'")}')">
-          ✓ Insérer dans l'observation
-        </button>
-      </div>
-    </div>`).join('');
+  var list = document.getElementById('cbet-list');
+  list.innerHTML = '';
+  items.forEach(function(a, i) {
+    var item = document.createElement('div');
+    item.className = 'art-item';
+    var head = document.createElement('div');
+    head.className = 'art-head';
+    head.innerHTML = '<div><div class="art-ref">' + a.ref + '</div><div class="art-theme">' + a.theme + ' · ' + a.cat + '</div></div><span>▾</span>';
+    var body = document.createElement('div');
+    body.className = 'art-body';
+    body.innerHTML = '<em>' + a.text + '</em>';
+    var insertBtn = document.createElement('button');
+    insertBtn.className = 'art-insert';
+    insertBtn.textContent = '✓ Insérer dans l\'observation';
+    (function(ref, text) {
+      insertBtn.addEventListener('click', function() { insertArt(ref, text); });
+    })(a.ref, a.text);
+    body.appendChild(insertBtn);
+    head.addEventListener('click', function() { body.classList.toggle('open'); });
+    item.appendChild(head);
+    item.appendChild(body);
+    list.appendChild(item);
+  });
 }
-
-function toggleArt(id) {
-  const body = document.getElementById(id);
-  const chev = document.getElementById('chev-' + id);
-  body.classList.toggle('open');
-  if (chev) chev.classList.toggle('open');
-}
-
-let currentObsId = null;
 
 function openModal(obsId) {
   currentObsId = obsId;
@@ -354,184 +310,258 @@ function closeModal() {
 
 function insertArt(ref, text) {
   if (!currentObsId) return;
-  const ta = document.getElementById('ref-' + currentObsId);
+  var ta = document.getElementById('ref-' + currentObsId);
   if (!ta) return;
-  const existing = ta.value.trim();
-  const line = ref + ' CBET : ' + text;
+  var existing = ta.value.trim();
+  var line = ref + ' CBET : ' + text;
   ta.value = existing ? existing + '\n' + line : line;
   closeModal();
   scheduleSave();
 }
 
-// ─── OBSERVATIONS ─────────────────────────────────────────────
-let obsCount = 0;
-
 function addObs() {
   obsCount++;
-  const id = obsCount;
-  const card = document.createElement('div');
+  var id = obsCount;
+  var list = document.getElementById('obs-list');
+  var card = document.createElement('div');
   card.className = 'obs-card';
   card.id = 'obs-' + id;
-  card.innerHTML = buildObs(id);
-  document.getElementById('obs-list').appendChild(card);
-  setTimeout(() => {
-    const loc = card.querySelector('.obs-loc');
-    if (loc) loc.focus();
-  }, 80);
+
+  // HEAD
+  var head = document.createElement('div');
+  head.className = 'obs-head';
+
+  var num = document.createElement('div');
+  num.className = 'obs-num';
+  num.textContent = id;
+
+  var loc = document.createElement('input');
+  loc.className = 'obs-loc';
+  loc.id = 'loc-' + id;
+  loc.placeholder = 'Localisation (ex : Niveau 1 – Local électrique)';
+  loc.addEventListener('input', scheduleSave);
+
+  var prio = document.createElement('select');
+  prio.className = 'prio-sel';
+  prio.id = 'prio-' + id;
+  [['', 'Priorité…'], ['URGENT', '🔴 URGENT'], ['MOYEN TERME', '🟠 MOYEN TERME'], ['À VÉRIFIER', '🔵 À VÉRIFIER'], ['CONFORME', '🟢 CONFORME']].forEach(function(opt) {
+    var o = document.createElement('option');
+    o.value = opt[0]; o.textContent = opt[1];
+    prio.appendChild(o);
+  });
+  (function(pid) {
+    prio.addEventListener('change', function() { updatePrio(pid); });
+  })(id);
+
+  var del = document.createElement('button');
+  del.className = 'del-btn';
+  del.textContent = '✕';
+  del.title = 'Supprimer';
+  (function(did) {
+    del.addEventListener('click', function() { delObs(did); });
+  })(id);
+
+  head.appendChild(num);
+  head.appendChild(loc);
+  head.appendChild(prio);
+  head.appendChild(del);
+
+  // BODY
+  var body = document.createElement('div');
+  body.className = 'obs-body';
+
+  body.appendChild(makeField('const-' + id, '👁 Constatation(s)', 'Décrivez l\'anomalie ou la situation observée…', 3));
+  body.appendChild(makeField('reco-' + id, '🛡 Mesures de prévention proposées', 'Décrivez les mesures correctives à mettre en place…', 3));
+  body.appendChild(makeRefField(id));
+  body.appendChild(makePhotoZone(id));
+
+  card.appendChild(head);
+  card.appendChild(body);
+  list.appendChild(card);
+
+  setTimeout(function() { loc.focus(); }, 50);
+  scheduleSave();
 }
 
-function buildObs(id) {
-  return `
-  <div class="obs-head">
-    <div class="obs-num">${id}</div>
-    <input class="obs-loc" id="loc-${id}"
-      placeholder="Localisation (ex : Niveau 1 – Local électrique)"
-      oninput="scheduleSave()">
-    <select class="prio-sel" id="prio-${id}" onchange="updatePrio(${id})">
-      <option value="">Priorité…</option>
-      <option value="URGENT">🔴 URGENT</option>
-      <option value="MOYEN TERME">🟠 MOYEN TERME</option>
-      <option value="À VÉRIFIER">🔵 À VÉRIFIER</option>
-      <option value="CONFORME">🟢 CONFORME</option>
-    </select>
-    <button class="del-btn" onclick="delObs(${id})" title="Supprimer">✕</button>
-  </div>
-  <div class="obs-body">
-    <div class="field-wrap">
-      <label>👁 Constatation(s)</label>
-      <textarea id="const-${id}" rows="3"
-        placeholder="Décrivez l'anomalie ou la situation observée…"
-        oninput="scheduleSave()"></textarea>
-    </div>
-    <div class="field-wrap">
-      <label>🛡 Mesures de prévention proposées</label>
-      <textarea id="reco-${id}" rows="3"
-        placeholder="Décrivez les mesures correctives à mettre en place…"
-        oninput="scheduleSave()"></textarea>
-    </div>
-    <div class="field-wrap">
-      <div class="ref-label-row">
-        <span class="ref-label-text">📖 Référence légale CBET 2017</span>
-        <button class="cbet-btn" onclick="openModal(${id})">📚 Bibliothèque</button>
-      </div>
-      <textarea id="ref-${id}" rows="2"
-        placeholder="ex : Art. III.3-17 CBET : les équipements non automatiques…"
-        oninput="scheduleSave()"></textarea>
-    </div>
-    <div>
-      <div class="photos-label">📷 Photos — compressées automatiquement (max 3)</div>
-      <div class="photos-grid" id="photos-${id}">
-        <label class="add-photo-btn" title="Prendre une photo">
-          <span class="add-photo-icon">📷</span>
-          <span>Caméra</span>
-          <input type="file" accept="image/*" capture="environment"
-            style="display:none" onchange="addPhoto(event,${id})">
-        </label>
-        <label class="add-photo-btn" title="Choisir depuis la galerie">
-          <span class="add-photo-icon">🖼</span>
-          <span>Galerie</span>
-          <input type="file" accept="image/*"
-            style="display:none" onchange="addPhoto(event,${id})">
-        </label>
-      </div>
-      <div class="photo-hint" id="photo-hint-${id}"></div>
-    </div>
-  </div>`;
+function makeField(fieldId, labelText, placeholder, rows) {
+  var wrap = document.createElement('div');
+  wrap.className = 'field-wrap';
+  var lbl = document.createElement('div');
+  lbl.className = 'field-lbl';
+  lbl.textContent = labelText;
+  var ta = document.createElement('textarea');
+  ta.id = fieldId;
+  ta.rows = rows;
+  ta.placeholder = placeholder;
+  ta.addEventListener('input', scheduleSave);
+  wrap.appendChild(lbl);
+  wrap.appendChild(ta);
+  return wrap;
 }
 
-async function addPhoto(evt, id) {
-  const file = evt.target.files[0];
+function makeRefField(id) {
+  var wrap = document.createElement('div');
+  wrap.className = 'field-wrap';
+  var lbl = document.createElement('div');
+  lbl.className = 'field-lbl';
+  var lblText = document.createElement('span');
+  lblText.textContent = '📖 Référence légale CBET 2017';
+  var cbetBtn = document.createElement('button');
+  cbetBtn.className = 'cbet-btn';
+  cbetBtn.textContent = '📚 Bibliothèque';
+  (function(bid) {
+    cbetBtn.addEventListener('click', function() { openModal(bid); });
+  })(id);
+  lbl.appendChild(lblText);
+  lbl.appendChild(cbetBtn);
+  var ta = document.createElement('textarea');
+  ta.id = 'ref-' + id;
+  ta.rows = 2;
+  ta.placeholder = 'ex : Art. III.3-17 CBET : les équipements non automatiques…';
+  ta.addEventListener('input', scheduleSave);
+  wrap.appendChild(lbl);
+  wrap.appendChild(ta);
+  return wrap;
+}
+
+function makePhotoZone(id) {
+  var zone = document.createElement('div');
+  var lbl = document.createElement('div');
+  lbl.className = 'photos-lbl';
+  lbl.textContent = '📷 Photos — compressées automatiquement (max 3)';
+  var grid = document.createElement('div');
+  grid.className = 'photos-grid';
+  grid.id = 'photos-' + id;
+
+  // Bouton caméra
+  var lblCam = makePhotoBtn('📷', 'Caméra', true, id);
+  // Bouton galerie
+  var lblGal = makePhotoBtn('🖼', 'Galerie', false, id);
+
+  grid.appendChild(lblCam);
+  grid.appendChild(lblGal);
+
+  var hint = document.createElement('div');
+  hint.className = 'photo-hint';
+  hint.id = 'photo-hint-' + id;
+
+  zone.appendChild(lbl);
+  zone.appendChild(grid);
+  zone.appendChild(hint);
+  return zone;
+}
+
+function makePhotoBtn(icon, label, useCapture, id) {
+  var lbl = document.createElement('label');
+  lbl.className = 'add-photo-lbl';
+  lbl.title = label;
+  lbl.innerHTML = '<span style="font-size:26px">' + icon + '</span><span style="font-size:11px">' + label + '</span>';
+  var input = document.createElement('input');
+  input.type = 'file';
+  input.accept = 'image/*';
+  if (useCapture) input.setAttribute('capture', 'environment');
+  input.style.display = 'none';
+  (function(bid) {
+    input.addEventListener('change', function(e) { handlePhoto(e, bid); });
+  })(id);
+  lbl.appendChild(input);
+  return lbl;
+}
+
+function handlePhoto(evt, id) {
+  var file = evt.target.files[0];
   if (!file) return;
-  const grid = document.getElementById('photos-' + id);
+  var grid = document.getElementById('photos-' + id);
   if (grid.querySelectorAll('.photo-thumb').length >= 3) {
     alert('Maximum 3 photos par observation.');
     evt.target.value = '';
     return;
   }
-  showStatus('⏳ Compression…');
-  const b64 = await compressImage(file);
-  const kb = b64size(b64);
-  const thumb = document.createElement('div');
-  thumb.className = 'photo-thumb';
-  thumb.innerHTML = `
-    <img src="${b64}" alt="Photo observation">
-    <button class="photo-del" onclick="removePhoto(this,${id})" title="Supprimer">✕</button>
-    <span class="photo-size">${kb} Ko</span>`;
-  grid.insertBefore(thumb, grid.querySelector('.add-photo-btn'));
-  checkPhotoLimit(id);
-  scheduleSave();
+  compressImage(file, function(b64) {
+    var kb = b64size(b64);
+    var thumb = document.createElement('div');
+    thumb.className = 'photo-thumb';
+    var img = document.createElement('img');
+    img.src = b64;
+    img.alt = 'Photo';
+    var delBtn = document.createElement('button');
+    delBtn.className = 'photo-del';
+    delBtn.textContent = '✕';
+    (function(t, bid) {
+      delBtn.addEventListener('click', function() {
+        t.remove();
+        checkPhotoLimit(bid);
+        scheduleSave();
+      });
+    })(thumb, id);
+    var kbSpan = document.createElement('span');
+    kbSpan.className = 'photo-ko';
+    kbSpan.textContent = kb + ' Ko';
+    thumb.appendChild(img);
+    thumb.appendChild(delBtn);
+    thumb.appendChild(kbSpan);
+    var firstBtn = grid.querySelector('.add-photo-lbl');
+    grid.insertBefore(thumb, firstBtn);
+    checkPhotoLimit(id);
+    scheduleSave();
+  });
   evt.target.value = '';
 }
 
-function removePhoto(btn, id) {
-  btn.parentElement.remove();
-  checkPhotoLimit(id);
-  scheduleSave();
-}
-
 function checkPhotoLimit(id) {
-  const grid = document.getElementById('photos-' + id);
-  const addBtn = grid.querySelector('.add-photo-btn');
-  const count = grid.querySelectorAll('.photo-thumb').length;
-  grid.querySelectorAll('.add-photo-btn').forEach(btn => {
+  var grid = document.getElementById('photos-' + id);
+  var count = grid.querySelectorAll('.photo-thumb').length;
+  grid.querySelectorAll('.add-photo-lbl').forEach(function(btn) {
     btn.style.display = count >= 3 ? 'none' : 'flex';
   });
-  const hint = document.getElementById('photo-hint-' + id);
-  if (hint) hint.textContent = count > 0
-    ? count + '/3 photo' + (count > 1 ? 's' : '') + ' — redimensionnées à 900px, qualité 72%'
-    : '';
+  var hint = document.getElementById('photo-hint-' + id);
+  if (hint) hint.textContent = count > 0 ? count + '/3 photo' + (count > 1 ? 's' : '') + ' — max 900px, qualité 72%' : '';
 }
 
 function updatePrio(id) {
-  const sel = document.getElementById('prio-' + id);
-  const v = sel.value;
-  sel.className = 'prio-sel' +
-    (v === 'URGENT' ? ' p-u' :
-     v === 'MOYEN TERME' ? ' p-m' :
-     v === 'À VÉRIFIER' ? ' p-v' :
-     v === 'CONFORME' ? ' p-c' : '');
+  var sel = document.getElementById('prio-' + id);
+  var v = sel.value;
+  sel.className = 'prio-sel' + (v === 'URGENT' ? ' p-u' : v === 'MOYEN TERME' ? ' p-m' : v === 'À VÉRIFIER' ? ' p-v' : v === 'CONFORME' ? ' p-c' : '');
   updateSynthese();
   scheduleSave();
 }
 
 function delObs(id) {
   if (!confirm('Supprimer cette observation ?')) return;
-  document.getElementById('obs-' + id).remove();
+  var card = document.getElementById('obs-' + id);
+  if (card) card.remove();
   updateSynthese();
   scheduleSave();
 }
 
-// ─── SYNTHESE ─────────────────────────────────────────────────
 function updateSynthese() {
-  const urgents = [];
-  document.querySelectorAll('.obs-card').forEach(card => {
-    const m = card.id.match(/obs-(\d+)/);
+  var urgents = [];
+  document.querySelectorAll('.obs-card').forEach(function(card) {
+    var m = card.id.match(/obs-(\d+)/);
     if (!m) return;
-    const id = m[1];
-    const sel = document.getElementById('prio-' + id);
+    var id = m[1];
+    var sel = document.getElementById('prio-' + id);
     if (sel && sel.value === 'URGENT') {
-      const loc = document.getElementById('loc-' + id);
+      var loc = document.getElementById('loc-' + id);
       urgents.push('Obs. ' + id + (loc && loc.value ? ' – ' + loc.value : ''));
     }
   });
-  const titre = document.getElementById('urg-titre');
-  const liste = document.getElementById('urg-liste');
+  var titre = document.getElementById('urg-titre');
+  var liste = document.getElementById('urg-liste');
   if (urgents.length === 0) {
     titre.textContent = 'Points urgents à traiter immédiatement :';
     liste.textContent = '— Aucun point urgent pour l\'instant —';
     liste.style.fontStyle = 'italic';
   } else {
-    titre.textContent = urgents.length + ' point' + (urgents.length > 1 ? 's' : '') +
-      ' urgent' + (urgents.length > 1 ? 's' : '') + ' à traiter immédiatement :';
+    titre.textContent = urgents.length + ' point' + (urgents.length > 1 ? 's' : '') + ' urgent' + (urgents.length > 1 ? 's' : '') + ' à traiter immédiatement :';
     liste.textContent = urgents.join(' | ');
     liste.style.fontStyle = 'normal';
   }
 }
 
-// ─── COLLECTE DONNÉES ──────────────────────────────────────────
 function collectData() {
-  const data = {
-    version: 'vlt-v3',
+  var data = {
+    version: 'vlt-v4',
     savedAt: new Date().toISOString(),
     infos: {
       entreprise: document.getElementById('i-ent').value,
@@ -539,124 +569,166 @@ function collectData() {
       adresse: document.getElementById('i-adr').value,
       ref: document.getElementById('i-ref').value,
       accomp: document.getElementById('i-acc').value,
-      nace: document.getElementById('i-nace').value,
+      nace: document.getElementById('i-nace').value
     },
     synthese: document.getElementById('synthese').value,
     obs: []
   };
-  document.querySelectorAll('.obs-card').forEach(card => {
-    const m = card.id.match(/obs-(\d+)/);
+  document.querySelectorAll('.obs-card').forEach(function(card) {
+    var m = card.id.match(/obs-(\d+)/);
     if (!m) return;
-    const id = m[1];
-    const photos = [];
-    card.querySelectorAll('.photo-thumb img').forEach(img => photos.push(img.src));
+    var id = m[1];
+    var photos = [];
+    card.querySelectorAll('.photo-thumb img').forEach(function(img) { photos.push(img.src); });
     data.obs.push({
-      id,
+      id: id,
       loc: (document.getElementById('loc-' + id) || {}).value || '',
       prio: (document.getElementById('prio-' + id) || {}).value || '',
       const_: (document.getElementById('const-' + id) || {}).value || '',
       reco: (document.getElementById('reco-' + id) || {}).value || '',
       ref: (document.getElementById('ref-' + id) || {}).value || '',
-      photos
+      photos: photos
     });
   });
   return data;
 }
 
-// ─── STATUT ───────────────────────────────────────────────────
-let saveTimer = null;
-
-function showStatus(msg) {
-  const el = document.getElementById('save-status');
-  el.textContent = msg;
-  el.style.opacity = '1';
-  clearTimeout(el._t);
-  el._t = setTimeout(() => { el.style.opacity = '0.7'; }, 4000);
-}
-
 function scheduleSave() {
   clearTimeout(saveTimer);
-  showStatus('…');
-  saveTimer = setTimeout(() => {
+  saveTimer = setTimeout(function() {
     updateSynthese();
     updateSizeBar();
-    showStatus('✓ OK');
-  }, 1200);
+  }, 1000);
 }
 
-// ─── SAUVEGARDE / CHARGEMENT JSON ─────────────────────────────
 function saveJSON() {
-  const data = collectData();
-  updateSizeBar();
-  const json = JSON.stringify(data, null, 2);
-  const kb = Math.round(json.length / 1024);
-  const blob = new Blob([json], { type: 'application/json' });
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement('a');
-  const ent = (data.infos.entreprise || 'VLT').replace(/[^a-zA-Z0-9]/g, '_');
-  const d = (data.infos.date || new Date().toISOString().slice(0, 10)).replace(/\//g, '-');
+  var data = collectData();
+  var json = JSON.stringify(data, null, 2);
+  var kb = Math.round(json.length / 1024);
+  var blob = new Blob([json], { type: 'application/json' });
+  var url = URL.createObjectURL(blob);
+  var a = document.createElement('a');
+  var ent = (data.infos.entreprise || 'VLT').replace(/[^a-zA-Z0-9]/g, '_');
+  var d = (data.infos.date || new Date().toISOString().slice(0, 10)).replace(/\//g, '-');
   a.href = url;
   a.download = 'VLT_' + ent + '_' + d + '.json';
+  document.body.appendChild(a);
   a.click();
+  document.body.removeChild(a);
   URL.revokeObjectURL(url);
-  showStatus('✓ Téléchargé (' + kb + ' Ko)');
-}
-
-function loadJSON() {
-  document.getElementById('json-input').click();
-}
-
-function handleLoad(evt) {
-  const file = evt.target.files[0];
-  if (!file) return;
-  const reader = new FileReader();
-  reader.onload = e => {
-    try {
-      const data = JSON.parse(e.target.result);
-      restoreData(data);
-      showStatus('✓ Rapport restauré !');
-    } catch (err) {
-      alert('Fichier JSON invalide ou corrompu.');
-    }
-  };
-  reader.readAsText(file);
-  evt.target.value = '';
+  updateSizeBar();
 }
 
 function restoreData(data) {
-  document.getElementById('i-ent').value = data.infos?.entreprise || '';
-  document.getElementById('i-date').value = data.infos?.date || '';
-  document.getElementById('i-adr').value = data.infos?.adresse || '';
-  document.getElementById('i-ref').value = data.infos?.ref || '';
-  document.getElementById('i-acc').value = data.infos?.accomp || '';
-  document.getElementById('i-nace').value = data.infos?.nace || '';
+  document.getElementById('i-ent').value = (data.infos && data.infos.entreprise) || '';
+  document.getElementById('i-date').value = (data.infos && data.infos.date) || '';
+  document.getElementById('i-adr').value = (data.infos && data.infos.adresse) || '';
+  document.getElementById('i-ref').value = (data.infos && data.infos.ref) || '';
+  document.getElementById('i-acc').value = (data.infos && data.infos.accomp) || '';
+  document.getElementById('i-nace').value = (data.infos && data.infos.nace) || '';
   document.getElementById('synthese').value = data.synthese || '';
   document.getElementById('obs-list').innerHTML = '';
   obsCount = 0;
-  (data.obs || []).forEach(o => {
+  (data.obs || []).forEach(function(o) {
     obsCount++;
-    const id = obsCount;
-    const card = document.createElement('div');
-    card.className = 'obs-card';
-    card.id = 'obs-' + id;
-    card.innerHTML = buildObs(id);
-    document.getElementById('obs-list').appendChild(card);
-    document.getElementById('loc-' + id).value = o.loc || '';
-    document.getElementById('const-' + id).value = o.const_ || '';
-    document.getElementById('reco-' + id).value = o.reco || '';
-    document.getElementById('ref-' + id).value = o.ref || '';
-    const sel = document.getElementById('prio-' + id);
-    if (o.prio) {
-      sel.value = o.prio;
-      sel.className = 'prio-sel' +
-        (o.prio === 'URGENT' ? ' p-u' :
-         o.prio === 'MOYEN TERME' ? ' p-m' :
-         o.prio === 'À VÉRIFIER' ? ' p-v' :
-         o.prio === 'CONFORME' ? ' p-c' : '');
-    }
-    if (o.photos && o.photos.length > 0) {
-      const grid = document.getElementById('photos-' + id);
-      o.photos.forEach(src => {
-        const kb = b64size(src);
-        const thumb = document.createElement('div');
-  
+    var id = obsCount;
+    addObsFromData(o, id);
+  });
+  updateSynthese();
+  updateSizeBar();
+}
+
+function addObsFromData(o, id) {
+  var list = document.getElementById('obs-list');
+  var card = document.createElement('div');
+  card.className = 'obs-card';
+  card.id = 'obs-' + id;
+
+  var head = document.createElement('div');
+  head.className = 'obs-head';
+  var num = document.createElement('div');
+  num.className = 'obs-num';
+  num.textContent = id;
+  var loc = document.createElement('input');
+  loc.className = 'obs-loc';
+  loc.id = 'loc-' + id;
+  loc.placeholder = 'Localisation…';
+  loc.value = o.loc || '';
+  loc.addEventListener('input', scheduleSave);
+  var prio = document.createElement('select');
+  prio.className = 'prio-sel';
+  prio.id = 'prio-' + id;
+  [['', 'Priorité…'], ['URGENT', '🔴 URGENT'], ['MOYEN TERME', '🟠 MOYEN TERME'], ['À VÉRIFIER', '🔵 À VÉRIFIER'], ['CONFORME', '🟢 CONFORME']].forEach(function(opt) {
+    var option = document.createElement('option');
+    option.value = opt[0]; option.textContent = opt[1];
+    prio.appendChild(option);
+  });
+  if (o.prio) {
+    prio.value = o.prio;
+    prio.className = 'prio-sel' + (o.prio === 'URGENT' ? ' p-u' : o.prio === 'MOYEN TERME' ? ' p-m' : o.prio === 'À VÉRIFIER' ? ' p-v' : o.prio === 'CONFORME' ? ' p-c' : '');
+  }
+  (function(pid) { prio.addEventListener('change', function() { updatePrio(pid); }); })(id);
+  var del = document.createElement('button');
+  del.className = 'del-btn'; del.textContent = '✕';
+  (function(did) { del.addEventListener('click', function() { delObs(did); }); })(id);
+  head.appendChild(num); head.appendChild(loc); head.appendChild(prio); head.appendChild(del);
+
+  var body = document.createElement('div');
+  body.className = 'obs-body';
+  var f1 = makeField('const-' + id, '👁 Constatation(s)', 'Décrivez l\'anomalie…', 3);
+  f1.querySelector('textarea').value = o.const_ || '';
+  var f2 = makeField('reco-' + id, '🛡 Mesures de prévention proposées', 'Décrivez les mesures…', 3);
+  f2.querySelector('textarea').value = o.reco || '';
+  var f3 = makeRefField(id);
+  f3.querySelector('textarea').value = o.ref || '';
+  var f4 = makePhotoZone(id);
+  body.appendChild(f1); body.appendChild(f2); body.appendChild(f3); body.appendChild(f4);
+
+  if (o.photos && o.photos.length > 0) {
+    var grid = f4.querySelector('.photos-grid');
+    o.photos.forEach(function(src) {
+      var kb = b64size(src);
+      var thumb = document.createElement('div');
+      thumb.className = 'photo-thumb';
+      var img = document.createElement('img'); img.src = src; img.alt = 'Photo';
+      var delBtn = document.createElement('button'); delBtn.className = 'photo-del'; delBtn.textContent = '✕';
+      (function(t, bid) { delBtn.addEventListener('click', function() { t.remove(); checkPhotoLimit(bid); scheduleSave(); }); })(thumb, id);
+      var kbSpan = document.createElement('span'); kbSpan.className = 'photo-ko'; kbSpan.textContent = kb + ' Ko';
+      thumb.appendChild(img); thumb.appendChild(delBtn); thumb.appendChild(kbSpan);
+      grid.insertBefore(thumb, grid.querySelector('.add-photo-lbl'));
+    });
+    checkPhotoLimit(id);
+  }
+
+  card.appendChild(head);
+  card.appendChild(body);
+  list.appendChild(card);
+}
+
+// ─── INIT ─────────────────────────────────────────────────────
+document.getElementById('btn-add-obs').addEventListener('click', function() { addObs(); });
+document.getElementById('btn-save').addEventListener('click', function() { saveJSON(); });
+document.getElementById('btn-load').addEventListener('click', function() { document.getElementById('json-input').click(); });
+document.getElementById('btn-print').addEventListener('click', function() { window.print(); });
+document.getElementById('btn-modal-close').addEventListener('click', function() { closeModal(); });
+document.getElementById('modal-overlay').addEventListener('click', function(e) { if (e.target === this) closeModal(); });
+document.getElementById('json-input').addEventListener('change', function(e) {
+  var file = e.target.files[0];
+  if (!file) return;
+  var reader = new FileReader();
+  reader.onload = function(ev) {
+    try { restoreData(JSON.parse(ev.target.result)); }
+    catch(err) { alert('Fichier JSON invalide.'); }
+  };
+  reader.readAsText(file);
+  e.target.value = '';
+});
+document.getElementById('synthese').addEventListener('input', scheduleSave);
+
+document.getElementById('i-date').value = new Date().toISOString().slice(0, 10);
+initModal();
+addObs();
+updateSizeBar();
+</script>
+</body>
+</html>
