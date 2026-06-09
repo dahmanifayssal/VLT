@@ -15,13 +15,13 @@
   --gris:#F7F7F5;--bord:#D3D1C7;
   --texte:#2C2C2A;--texte-sec:#5F5E5A;
 }
-body{font-family:Arial,sans-serif;font-size:13px;color:var(--texte);background:var(--gris);padding:0;margin:0}
+body{font-family:Arial,sans-serif;font-size:13px;color:var(--texte);background:var(--gris);padding:0;margin:0;padding-bottom:100px}
 
 /* TOOLBAR */
 .toolbar{background:var(--bleu);padding:10px 16px;display:flex;flex-wrap:wrap;gap:8px;align-items:center;position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,0.2)}
 .toolbar-title{color:#fff;font-weight:700;font-size:14px;flex:1;min-width:120px}
 #save-status{color:#fff;font-size:11px;opacity:0.8;min-width:80px;text-align:center}
-.tb-btn{background:rgba(255,255,255,0.15);color:#fff;border:1px solid rgba(255,255,255,0.3);border-radius:6px;padding:9px 12px;font-size:12px;cursor:pointer;white-space:nowrap;font-weight:700;min-height:38px;-webkit-tap-highlight-color:transparent}
+.tb-btn{background:rgba(255,255,255,0.15);color:#fff;border:1px solid rgba(255,255,255,0.3);border-radius:6px;padding:9px 12px;font-size:12px;cursor:pointer;white-space:nowrap;font-weight:700;min-height:44px;-webkit-tap-highlight-color:transparent;touch-action:manipulation}
 .tb-btn:active{background:rgba(255,255,255,0.35)}
 .tb-btn.green{background:#2E7D32;border-color:#2E7D32}
 .tb-btn.orange{background:#7B4F00;border-color:#7B4F00}
@@ -58,7 +58,7 @@ body{font-family:Arial,sans-serif;font-size:13px;color:var(--texte);background:v
 #size-val{font-weight:700;font-size:12px;color:var(--bleu);white-space:nowrap;min-width:50px;text-align:right}
 
 /* OBS */
-.add-btn{width:100%;padding:14px;background:var(--bleu-clair);color:var(--bleu);border:2px dashed var(--bleu);border-radius:8px;font-size:14px;font-weight:700;cursor:pointer;margin-top:12px;-webkit-tap-highlight-color:transparent}
+.add-btn{width:100%;padding:18px;background:var(--bleu-clair);color:var(--bleu);border:2px dashed var(--bleu);border-radius:8px;font-size:16px;font-weight:700;cursor:pointer;margin-top:12px;min-height:56px;-webkit-tap-highlight-color:transparent;touch-action:manipulation}
 .add-btn:active{background:#c5daf5}
 
 .obs-card{border:1px solid var(--bord);border-radius:8px;margin-bottom:14px;overflow:hidden;background:#fff}
@@ -71,7 +71,7 @@ body{font-family:Arial,sans-serif;font-size:13px;color:var(--texte);background:v
 .prio-sel.p-m{background:var(--orange-f);color:var(--orange);border-color:#FAC775}
 .prio-sel.p-v{background:var(--bleu2-f);color:var(--bleu2);border-color:#B5D4F4}
 .prio-sel.p-c{background:var(--vert-f);color:var(--vert);border-color:#C0DD97}
-.del-btn{background:var(--rouge-f);color:var(--rouge);border:1px solid #F7C1C1;border-radius:6px;width:32px;height:32px;cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center;flex-shrink:0;-webkit-tap-highlight-color:transparent}
+.del-btn{background:var(--rouge-f);color:var(--rouge);border:1px solid #F7C1C1;border-radius:6px;width:44px;height:44px;cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center;flex-shrink:0;-webkit-tap-highlight-color:transparent;touch-action:manipulation}
 
 .obs-body{padding:14px}
 .field-wrap{margin-bottom:12px}
@@ -81,7 +81,7 @@ body{font-family:Arial,sans-serif;font-size:13px;color:var(--texte);background:v
 
 .ref-label-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:5px}
 .ref-label-text{font-size:10px;font-weight:700;color:var(--bleu);text-transform:uppercase;letter-spacing:0.5px}
-.cbet-btn{background:var(--bleu);color:#fff;border:none;border-radius:6px;padding:6px 12px;font-size:12px;cursor:pointer;font-weight:700;-webkit-tap-highlight-color:transparent}
+.cbet-btn{background:var(--bleu);color:#fff;border:none;border-radius:6px;padding:10px 14px;font-size:13px;cursor:pointer;font-weight:700;min-height:44px;-webkit-tap-highlight-color:transparent;touch-action:manipulation}
 .cbet-btn:active{background:#14397a}
 
 /* PHOTOS */
@@ -662,6 +662,4 @@ function restoreData(data) {
         thumb.className = 'photo-thumb';
         thumb.innerHTML = `
           <img src="${src}" alt="Photo">
-          <button class="photo-del" onclick="removePhoto(this,${id})" title="Supprimer">✕</button>
-          <span class="photo-size">${kb} Ko</span>`;
-        grid.insertBefore(thumb, grid.que
+          <button class="photo-del"
