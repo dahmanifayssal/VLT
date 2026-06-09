@@ -421,10 +421,16 @@ function buildObs(id) {
     <div>
       <div class="photos-label">📷 Photos — compressées automatiquement (max 3)</div>
       <div class="photos-grid" id="photos-${id}">
-        <label class="add-photo-btn" title="Ajouter une photo">
-          <span class="add-photo-icon">+</span>
-          <span>Photo</span>
+        <label class="add-photo-btn" title="Prendre une photo">
+          <span class="add-photo-icon">📷</span>
+          <span>Caméra</span>
           <input type="file" accept="image/*" capture="environment"
+            style="display:none" onchange="addPhoto(event,${id})">
+        </label>
+        <label class="add-photo-btn" title="Choisir depuis la galerie">
+          <span class="add-photo-icon">🖼</span>
+          <span>Galerie</span>
+          <input type="file" accept="image/*"
             style="display:none" onchange="addPhoto(event,${id})">
         </label>
       </div>
@@ -467,7 +473,9 @@ function checkPhotoLimit(id) {
   const grid = document.getElementById('photos-' + id);
   const addBtn = grid.querySelector('.add-photo-btn');
   const count = grid.querySelectorAll('.photo-thumb').length;
-  if (addBtn) addBtn.style.display = count >= 3 ? 'none' : 'flex';
+  grid.querySelectorAll('.add-photo-btn').forEach(btn => {
+    btn.style.display = count >= 3 ? 'none' : 'flex';
+  });
   const hint = document.getElementById('photo-hint-' + id);
   if (hint) hint.textContent = count > 0
     ? count + '/3 photo' + (count > 1 ? 's' : '') + ' — redimensionnées à 900px, qualité 72%'
@@ -656,20 +664,4 @@ function restoreData(data) {
           <img src="${src}" alt="Photo">
           <button class="photo-del" onclick="removePhoto(this,${id})" title="Supprimer">✕</button>
           <span class="photo-size">${kb} Ko</span>`;
-        grid.insertBefore(thumb, grid.querySelector('.add-photo-btn'));
-      });
-      checkPhotoLimit(id);
-    }
-  });
-  updateSynthese();
-  updateSizeBar();
-}
-
-// ─── INIT ──────────────────────────────────────────────────────
-document.getElementById('i-date').value = new Date().toISOString().slice(0, 10);
-initModal();
-addObs();
-updateSizeBar();
-</script>
-</body>
-</html>
+        grid.insertBefore(thumb, grid.que
