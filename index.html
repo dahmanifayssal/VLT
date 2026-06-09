@@ -18,16 +18,17 @@
 body{font-family:Arial,sans-serif;font-size:13px;color:var(--texte);background:var(--gris);padding:0;margin:0;padding-bottom:100px}
 
 /* TOOLBAR */
-.toolbar{background:var(--bleu);padding:10px 16px;display:flex;flex-wrap:wrap;gap:8px;align-items:center;position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,0.2)}
-.toolbar-title{color:#fff;font-weight:700;font-size:14px;flex:1;min-width:120px}
-#save-status{color:#fff;font-size:11px;opacity:0.8;min-width:80px;text-align:center}
-.tb-btn{background:rgba(255,255,255,0.15);color:#fff;border:1px solid rgba(255,255,255,0.3);border-radius:6px;padding:9px 12px;font-size:12px;cursor:pointer;white-space:nowrap;font-weight:700;min-height:44px;-webkit-tap-highlight-color:transparent;touch-action:manipulation}
+.toolbar{background:var(--bleu);padding:8px 12px;display:flex;flex-wrap:nowrap;gap:6px;align-items:center;position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,0.2)}
+.toolbar-title{color:#fff;font-weight:700;font-size:13px;flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#save-status{display:none}
+.tb-btn{background:rgba(255,255,255,0.15);color:#fff;border:1px solid rgba(255,255,255,0.3);border-radius:6px;padding:10px 14px;font-size:13px;cursor:pointer;white-space:nowrap;font-weight:700;min-height:44px;flex-shrink:0;-webkit-tap-highlight-color:transparent;touch-action:manipulation;display:flex;align-items:center;gap:5px}
 .tb-btn:active{background:rgba(255,255,255,0.35)}
 .tb-btn.green{background:#2E7D32;border-color:#2E7D32}
 .tb-btn.orange{background:#7B4F00;border-color:#7B4F00}
-@media(max-width:500px){
-  .toolbar-title{font-size:12px}
-  .tb-btn{padding:8px 9px;font-size:11px}
+@media(max-width:480px){
+  .toolbar-title{font-size:11px}
+  .tb-btn{padding:10px 10px;font-size:12px}
+  .tb-btn .btn-label{display:none}
 }
 
 /* PAGE */
@@ -144,10 +145,9 @@ body{font-family:Arial,sans-serif;font-size:13px;color:var(--texte);background:v
 
 <div class="toolbar">
   <span class="toolbar-title">📋 VLT — CESI SEPP</span>
-  <span id="save-status">Prêt</span>
-  <button class="tb-btn green" onclick="saveJSON()">💾 Sauvegarder</button>
-  <button class="tb-btn orange" onclick="loadJSON()">📂 Reprendre</button>
-  <button class="tb-btn" onclick="window.print()">🖨 Imprimer</button>
+  <button class="tb-btn green" onclick="saveJSON()">💾 <span class="btn-label">Sauvegarder</span></button>
+  <button class="tb-btn orange" onclick="loadJSON()">📂 <span class="btn-label">Reprendre</span></button>
+  <button class="tb-btn" onclick="window.print()">🖨 <span class="btn-label">Imprimer</span></button>
 </div>
 <input type="file" id="json-input" accept=".json" style="display:none" onchange="handleLoad(event)">
 
@@ -659,7 +659,3 @@ function restoreData(data) {
       o.photos.forEach(src => {
         const kb = b64size(src);
         const thumb = document.createElement('div');
-        thumb.className = 'photo-thumb';
-        thumb.innerHTML = `
-          <img src="${src}" alt="Photo">
-          <button class="photo-del"
