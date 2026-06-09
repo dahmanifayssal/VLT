@@ -183,7 +183,7 @@ body{font-family:Arial,sans-serif;font-size:13px;color:var(--texte);background:v
       <span id="size-val">~0 Ko</span>
     </div>
     <div id="obs-list"></div>
-    <button class="add-btn" onclick="addObs()">+ Ajouter une observation</button>
+    <button class="add-btn" id="btn-add-obs">+ Ajouter une observation</button>
   </div>
 
   <div class="section">
@@ -659,3 +659,4 @@ function restoreData(data) {
       o.photos.forEach(src => {
         const kb = b64size(src);
         const thumb = document.createElement('div');
+  
